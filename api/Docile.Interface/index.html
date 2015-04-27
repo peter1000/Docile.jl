@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Docile.Interface - Docile.jl</title>
+  
+
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/highlight.css">
+
+  <script src="../../js/jquery-2.1.1.min.js"></script>
+  <script src="../../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+  <script src="../../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> Docile.jl</a>
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      <ul class="current">
+    
+        
+            <li class="toctree-l1 ">
+                <a class="" href="../..">Introduction</a>
+                
+            </li>
+        
+
+    
+        
+            <span>Manual</span>
+            
+                <li class="toctree-l2 ">
+                    <a class="" href="../../manual/">Overview</a>
+                    
+                </li>
+            
+                <li class="toctree-l2 ">
+                    <a class="" href="../../syntax/">Syntax</a>
+                    
+                </li>
+            
+        
+
+    
+        
+            <span>API</span>
+            
+                <li class="toctree-l2 ">
+                    <a class="" href="../Docile/">Docile</a>
+                    
+                </li>
+            
+                <li class="toctree-l2 current">
+                    <a class="current" href="./">Docile.Interface</a>
+                    
+                        <ul>
+                        
+                            <li class="toctree-l3"><a href="#docileinterface">Docile.Interface</a></li>
+                            
+                                <li><a class="toctree-l4" href="#methods-exported">Methods [Exported]</a></li>
+                            
+                        
+                        </ul>
+                    
+                </li>
+            
+                <li class="toctree-l2 ">
+                    <a class="" href="../">Index</a>
+                    
+                </li>
+            
+        
+
+    
+</ul>
+
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">Docile.jl</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+        <li>API &raquo;</li>
+      
+    
+    <li>Docile.Interface</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="https://github.com/MichaelHatherly/Docile.jl" class="icon icon-github"> Edit on GitHub</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              <h1 id="docileinterface">Docile.Interface</h1>
+<p>Utility methods for working with <code>Entry</code> and <code>Metadata</code> types from the <code>Docile</code>
+module (documentation available <a href="../api/Docile">here</a>).</p>
+<p><a id="docile.interface__methods_exported" class="lexicon_grp_definition"></a></p>
+<h2 id="methods-exported">Methods [Exported]</h2>
+<hr />
+<p><a id="method__category.1" class="lexicon_definition"></a></p>
+<h4 id="categorycedocileentryc">category{C}(e::Docile.Entry{C}) <a href="#method__category.1">¶</a></h4>
+<p>Symbol representing the category that an <code>Entry</code> belongs to.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L147">Docile/src/interface.jl:147</a></p>
+<hr />
+<p><a id="method__data.1" class="lexicon_definition"></a></p>
+<h4 id="dataddociledocsformat">data(d::Docile.Docs{format}) <a href="#method__data.1">¶</a></h4>
+<p>The raw content stored in a docstring.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L171">Docile/src/interface.jl:171</a></p>
+<hr />
+<p><a id="method__docs.1" class="lexicon_definition"></a></p>
+<h4 id="docsedocileentrycategory">docs(e::Docile.Entry{category}) <a href="#method__docs.1">¶</a></h4>
+<p>Documentation related to the entry.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L162">Docile/src/interface.jl:162</a></p>
+<hr />
+<p><a id="method__documented.1" class="lexicon_definition"></a></p>
+<h4 id="documented">documented() <a href="#method__documented.1">¶</a></h4>
+<p>Returns the modules that are currently documented by Docile.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L41">Docile/src/interface.jl:41</a></p>
+<hr />
+<p><a id="method__entries.1" class="lexicon_definition"></a></p>
+<h4 id="entriesmetadocilemetadata">entries(meta::Docile.Metadata) <a href="#method__entries.1">¶</a></h4>
+<p>Dictionary associating objects and documentation entries.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L86">Docile/src/interface.jl:86</a></p>
+<hr />
+<p><a id="method__files.1" class="lexicon_definition"></a></p>
+<h4 id="filesmetadocilemetadata">files(meta::Docile.Metadata) <a href="#method__files.1">¶</a></h4>
+<p>All files <code>include</code>d in the module documented with the <code>meta</code> object.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L96">Docile/src/interface.jl:96</a></p>
+<hr />
+<p><a id="method__format.1" class="lexicon_definition"></a></p>
+<h4 id="formatfddociledocsf">format{F}(d::Docile.Docs{F}) <a href="#method__format.1">¶</a></h4>
+<p>Return the format that a docstring is written in.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L176">Docile/src/interface.jl:176</a></p>
+<hr />
+<p><a id="method__isdocumented.1" class="lexicon_definition"></a></p>
+<h4 id="isdocumentedmodmodule">isdocumented(mod::Module) <a href="#method__isdocumented.1">¶</a></h4>
+<p>Is the given module <code>modname</code> documented using Docile?</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L46">Docile/src/interface.jl:46</a></p>
+<hr />
+<p><a id="method__isexported.1" class="lexicon_definition"></a></p>
+<h4 id="isexportedmodnamemodule-object">isexported(modname::Module, object) <a href="#method__isexported.1">¶</a></h4>
+<p>Check whether <code>object</code> has been exported from a <em>documented</em> module <code>modname</code>.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L111">Docile/src/interface.jl:111</a></p>
+<hr />
+<p><a id="method__isloaded.1" class="lexicon_definition"></a></p>
+<h4 id="isloadedmetadocilemetadata">isloaded(meta::Docile.Metadata) <a href="#method__isloaded.1">¶</a></h4>
+<p>Has the documentation contained in a module been loaded into the <code>meta</code> object?</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L101">Docile/src/interface.jl:101</a></p>
+<hr />
+<p><a id="method__manual.1" class="lexicon_definition"></a></p>
+<h4 id="manualmetadocilemetadata">manual(meta::Docile.Metadata) <a href="#method__manual.1">¶</a></h4>
+<p>The <code>Manual</code> object containing a module's manual pages.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L81">Docile/src/interface.jl:81</a></p>
+<hr />
+<p><a id="method__metadata.1" class="lexicon_definition"></a></p>
+<h4 id="metadataedocileentrycategory">metadata(e::Docile.Entry{category}) <a href="#method__metadata.1">¶</a></h4>
+<p>Dictionary containing arbitrary metadata related to an entry.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L157">Docile/src/interface.jl:157</a></p>
+<hr />
+<p><a id="method__metadata.2" class="lexicon_definition"></a></p>
+<h4 id="metadatametadocilemetadata">metadata(meta::Docile.Metadata) <a href="#method__metadata.2">¶</a></h4>
+<p>A dictionary containing configuration settings related to the <code>meta</code> object.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L106">Docile/src/interface.jl:106</a></p>
+<hr />
+<p><a id="method__metadata.3" class="lexicon_definition"></a></p>
+<h4 id="metadatamodmodule">metadata(mod::Module) <a href="#method__metadata.3">¶</a></h4>
+<p>Returns the <code>Metadata</code> object stored in a module <code>modname</code> by Docile.</p>
+<p>Throws an <code>ArgumentError</code> when the module has not been documented.</p>
+<p>If the <code>Metadata</code> is not loaded yet (<code>isloaded</code> returns <code>false</code>) then that is
+done first, and the resulting documentation is returned.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L56">Docile/src/interface.jl:56</a></p>
+<hr />
+<p><a id="method__modulename.1" class="lexicon_definition"></a></p>
+<h4 id="modulenameedocileentrycategory">modulename(e::Docile.Entry{category}) <a href="#method__modulename.1">¶</a></h4>
+<p>Module where the entry is defined.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L152">Docile/src/interface.jl:152</a></p>
+<hr />
+<p><a id="method__modulename.2" class="lexicon_definition"></a></p>
+<h4 id="modulenamemetadocilemetadata">modulename(meta::Docile.Metadata) <a href="#method__modulename.2">¶</a></h4>
+<p>Module where the <code>Metadata</code> object is defined.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L76">Docile/src/interface.jl:76</a></p>
+<hr />
+<p><a id="method__parsed.1" class="lexicon_definition"></a></p>
+<h4 id="parsedddociledocsformat">parsed(d::Docile.Docs{format}) <a href="#method__parsed.1">¶</a></h4>
+<p>The parsed documentation for an object. Lazy parsing.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L181">Docile/src/interface.jl:181</a></p>
+<hr />
+<p><a id="method__parsedocs.1" class="lexicon_definition"></a></p>
+<h4 id="parsedocsextddociledocsext">parsedocs{ext}(d::Docile.Docs{ext}) <a href="#method__parsedocs.1">¶</a></h4>
+<p>Extension method for handling arbitrary docstring formats.</p>
+<p>Parsers for additional formats can be defined by extending this method as follows:</p>
+<pre><code class="julia">import Docile.Interface: parsedocs
+
+parsedocs(d::Docs{:format}) = Format.parse(data(d))
+
+</code></pre>
+
+<p>where <code>:format</code> is the symbol representing the docstring's format and <code>Format.parse</code> is
+the desired parser.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L198">Docile/src/interface.jl:198</a></p>
+<hr />
+<p><a id="method__root.1" class="lexicon_definition"></a></p>
+<h4 id="rootmetadocilemetadata">root(meta::Docile.Metadata) <a href="#method__root.1">¶</a></h4>
+<p>File containing the module definition documented with the <code>meta</code> object.</p>
+<p><em>source:</em>
+<a href="https://github.com/peter1000/Docile.jl/tree/d40b329c291a0eefb0530fb6617ec0770848b101/src/interface.jl#L91">Docile/src/interface.jl:91</a></p>
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../" class="btn btn-neutral float-right" title="Index"/>Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../Docile/" class="btn btn-neutral" title="Docile"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+    <!-- Copyright etc -->
+    </p>
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+        
+            <a href="https://github.com/MichaelHatherly/Docile.jl" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+        
+      <span><a href="../Docile/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      <span style="margin-left: 15px"><a href="../" style="color: #fcfcfc">Next &raquo;</a></span>
+    </span>
+</div>
+
+<!--
+MkDocs version  : 0.13.0.dev
+Docs Build Date : 2015-04-27 12:43:26.423565
+-->
+</body>
+</html>
