@@ -71,3 +71,24 @@ findmeta(m::Module, obj, field::Symbol) = findmeta(CACHE, m, obj, field)
 Returns the set of all loaded modules.
 """
 loadedmodules() = loadedmodules(CACHE)
+
+"""
+Returns the module where a documented object ``obj`` was defined.
+"""
+:getmod
+
+getmod(obj::Module)          = obj
+getmod(obj::Method)          = obj.func.code.module
+getmod(obj::DataType)        = obj.name.module
+getmod(obj::QualifiedSymbol) = obj.mod
+getmod(obj::Aside)           = obj.mod
+
+function getmod(obj::Function)
+    if isgeneric(obj)
+        isa(obj.env.defs, Void)                                                                   ?
+            throw(ArgumentError("At least one method must be defined for a documented function")) :
+            obj.env.defs.func.code.module
+    else # Macro
+        obj.code.module
+    end
+end

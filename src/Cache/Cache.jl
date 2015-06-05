@@ -7,7 +7,7 @@ export getraw, getparsed, getmeta, clear!, objects
 using Compat
 
 import ..Utilities
-import ..Collector: Collector, PackageData, ModuleData
+import ..Collector: Collector, PackageData, ModuleData, QualifiedSymbol, Aside
 import ..Formats
 
 include("types.jl")
