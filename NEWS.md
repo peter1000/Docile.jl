@@ -1,3 +1,35 @@
+### v0.5.14
+
+* Fix external documentation checking.
+
+### v0.5.13
+
+* Fix module loading error.
+
+### v0.5.12
+
+* Manually initialise cache rather than by using ``__init__``.
+
+### v0.5.11
+
+* Fix for pre-compilation error.
+
+### v0.5.10
+
+* Fixes for Julia 0.4 bare docstring syntax.
+
+### v0.5.9
+
+* Fix for removal of ``@mstr`` from ``Base``.
+
+### v0.5.8
+
+* Fix implicit "external file as docstring" validation code.
+
+### v0.5.7
+
+* Add support for ``bitstype`` documentation.
+
 ### v0.5.6
 
 * Implement automatic caching of parsed expressions. Improves loading time of help.

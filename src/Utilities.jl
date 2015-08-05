@@ -15,7 +15,7 @@ end
 # File parsing and caching. #
 
 "Internal version of the cache structure."
-const CACHE_VER = v"0.0.1"
+const CACHE_VER = v"0.0.3"
 
 "Path to Docile's main cache folder."
 const CACHE_DIR = normpath(joinpath(dirname(@__FILE__), "..", "cache"))
@@ -46,7 +46,7 @@ Returns the cache path for a given file ``file``.
 path_id(file::AbstractString) = joinpath(
     CACHE_CUR,
     string(hash(file)),
-    string(hash(mtime(file)))
+    string(hash(mtime(file), hash(VERSION)))
     )
 
 """
@@ -55,6 +55,7 @@ Retrieve the ``Expr`` object from a Julia source file ``file``.
 Caches the expression based on it's file name and ``mtime`` value.
 """
 function parsefile(file::AbstractString)
+    __init_cache__()
     cached = path_id(file)
     if isfile(cached)
         open(deserialize, cached)
@@ -99,18 +100,11 @@ issymbol(::Any)    = false
 """
 Path to Julia's base source code.
 """
-const BASE = abspath(joinpath(JULIA_HOME, "..", "share", "julia", "base"))
+basepath() = abspath(joinpath(JULIA_HOME, "..", "share", "julia", "base"))
 
 """
 Convert a path to absolute. Relative paths are guessed to be from Julia ``/base``.
 """
-expandpath(path) = normpath(isabspath(path) ? path : joinpath(BASE, path))
-
-# Module initialization. #
-
-function __init__()
-    # Clear out old versions of the expression cache.
-    __init_cache__()
-end
+expandpath(path) = normpath(isabspath(path) ? path : joinpath(basepath(), path))
 
 end

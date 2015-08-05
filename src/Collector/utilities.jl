@@ -31,6 +31,9 @@ getobject(H"global, typealias", ::Any, state, expr, ::Any) =
 getobject(H"type, symbol", moduledata, state, expr, ::Any) =
     getfield(moduledata.modname, getvar(state, name(expr)))
 
+getobject(H"bitstype", moduledata, state, expr, ::Any) =
+   getfield(moduledata.modname, expr.args[2])
+
 """
 Get the `(anonymous function)` object defined by a macro expression.
 
@@ -107,16 +110,17 @@ recheck(::Method,        ::Symbol) = :method
 The category of an expression. `:symbol` is resolved at a later stage by `recheck`.
 """
 getcategory(x) =
-    ismethod(x) ? :method    :
-    ismacro(x)  ? :macro     :
-    istype(x)   ? :type      :
-    isalias(x)  ? :typealias :
-    isglobal(x) ? :global    :
-    issymbol(x) ? :symbol    :
-    isfunc(x)   ? :symbol    :
-    istuple(x)  ? :tuple     :
-    isvcat(x)   ? :vcat      :
-    isvect(x)   ? :vect      :
+    ismethod(x)   ? :method    :
+    ismacro(x)    ? :macro     :
+    istype(x)     ? :type      :
+    isalias(x)    ? :typealias :
+    isbitstype(x) ? :bitstype  :
+    isglobal(x)   ? :global    :
+    issymbol(x)   ? :symbol    :
+    isfunc(x)     ? :symbol    :
+    istuple(x)    ? :tuple     :
+    isvcat(x)     ? :vcat      :
+    isvect(x)     ? :vect      :
     error("@doc: cannot document object:\n$(ex)")
 
 
@@ -138,6 +142,7 @@ ismethod(x)       = isexpr(x, [:function, :(=)])       &&  isexpr(x.args[1], :ca
 isglobal(x)       = isexpr(x, [:global, :const, :(=)]) && !isexpr(x.args[1], :call)
 isfunc(x)         = isexpr(x, :function) && isa(x.args[1], Symbol)
 istype(x)         = isexpr(x, [:type, :abstract])
+isbitstype(x)     = isexpr(x, :bitstype)
 isconcretetype(x) = isexpr(x, :type)
 isalias(x)        = isexpr(x, :typealias)
 ismacro(x)        = isexpr(x, :macro)
@@ -156,6 +161,9 @@ isloop(x)         = isexpr(x, [:for, :while])
 isdocstring(x) = ismacrocall(x) && ismatch(r"(_|_m|m)str", string(x.args[1]))
 isdocstring(::AbstractString) = true
 
+getstr(x::AbstractString) = x
+getstr(x::Expr) = x.args[end]
+
 isstring(::AbstractString) = true
 isstring(::Any)            = false
 
@@ -170,6 +178,11 @@ isdocblock(block) =
     isdocstring(block[2])    &&
     isline(block[3])         &&
     isdocumentable(block[4])
+
+is_atdoc(block) =
+    ismacrocall(block[2]) &&
+    length(block[2].args) == 3 &&
+    block[2].args[1] == Expr(:(.), :Base, QuoteNode(symbol("@doc")))
 
 """
 Is the tuple a valid comment block?
@@ -191,6 +204,7 @@ isdocumentable(ex) =
     ismethod(ex)    ||
     ismacro(ex)     ||
     istype(ex)      ||
+    isbitstype(ex)  ||
     isalias(ex)     ||
     isglobal(ex)    ||
     issymbol(ex)    ||
@@ -205,11 +219,13 @@ isdocumentable(ex) =
 extract_quoted(qn::QuoteNode) = qn.value
 extract_quoted(other)         = other
 
-unwrap_macrocall(expr::Expr) = (ismacrocall(expr) && (expr = expr.args[2]); expr)
-unwrap_macrocall(other)      = other
+unwrap_macrocall(x::Expr) = ismacrocall(x) && length(x.args) > 1 ? x.args[2] : x
+unwrap_macrocall(other)   = other
 
 linenumber(x::LineNumberNode) = x.line
 linenumber(x::Expr)           = x.args[1]
+
+computeline(aboveline, docs) = linenumber(aboveline) + length(matchall(r"$"m, docs)) - 1
 
 macroname(ex) = symbol("@$(ex)")
 
@@ -217,7 +233,17 @@ macroname(ex) = symbol("@$(ex)")
 """
 Check whether a docstring is acutally a file path. Read that instead if it is.
 """
-findexternal(docs) = (length(docs) < 256 && isfile(docs)) ? readall(docs) : docs
+function findexternal(docs)
+    try
+        validfile(docs) ? readall(docs) : docs
+    catch err
+        isa(err, Base.UVError) || throw(err)
+        docs
+    end
+end
+
+# https://github.com/MichaelHatherly/Docile.jl/issues/140#issuecomment-114070589
+validfile(path) = (length(pwd()) + length(path)) < 144  && isfile(path)
 
 
 """

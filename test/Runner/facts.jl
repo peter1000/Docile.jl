@@ -20,7 +20,7 @@ facts("Runner.") do
         @fact Docile.Runner.exec(s, :(Union(Symbol, Expr))) => Union(Symbol, Expr)
         @fact Docile.Runner.exec(s, :(Array{Int, 3})) => Array{Int, 3}
 
-        @fact Docile.Runner.exec(s, :(current_module())) => DocileTests
+        @fact Docile.Runner.exec(s, :(current_module())) => Main
 
         @fact Docile.Runner.exec(s, :(@__FILE__)) => @__FILE__
         @fact Docile.Runner.exec(s, :(MIME"text/plain")) => MIME"text/plain"
@@ -28,6 +28,8 @@ facts("Runner.") do
         @fact isempty(s.scopes) => true
         Docile.Runner.addtoscope!(s, :T, TypeVar(:T, Integer))
         @fact length(s.scopes) => 1
+
+        @fact Docile.Runner.getvar(s, :T) => TypeVar(:T, Integer)
 
         @fact Docile.Runner.exec(s, :(Matrix{T})) => Matrix{TypeVar(:T, Integer)}
         @fact Docile.Runner.exec(s, :(Type{Complex{T}})) => Type{Complex{TypeVar(:T, Integer)}}
